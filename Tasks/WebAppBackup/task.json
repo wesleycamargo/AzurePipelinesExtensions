@@ -1,0 +1,90 @@
+{
+    "id": "d6c76deb-81b8-42de-904e-11ceca9aa0ff",
+    "name": "AzureWebAppBackup",
+    "friendlyName": "AzureWebAppBackup",
+    "description": "AzureWebAppBackup",
+    "helpMarkDown": "",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "author": "Wesley Camargo",
+    "version": {
+        "Major": 0,
+        "Minor": 8,
+        "Patch": 0
+    },
+    "instanceNameFormat": "Creating backup of $(webAppName)",
+    "inputs": [
+        {
+            "name": "ConnectedServiceName",
+            "aliases": [
+                "azureSubscription"
+            ],
+            "type": "connectedService:AzureRM",
+            "label": "Azure subscription",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Select the Azure Resource Manager subscription"
+        },
+
+
+        {
+            "name": "storageAccountResourceGroupName",
+            "type": "string",
+            "label": "Resource Group of Storage Account",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Resource Group of Storage Account"
+        },
+        {
+            "name": "storagename",
+            "type": "string",
+            "label": "Storage Account Name",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Storage Account Name",
+            "properties": {
+                "EditableOptions": "True"
+            }
+        },
+        {
+            "name": "containerName",
+            "type": "string",
+            "label": "Storage Container Name",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Container where backup will be storage"
+        },
+
+        {
+            "name": "webAppName",
+            "type": "string",
+            "label": "WebApp Name",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "WebApp that will be backuped"
+        },
+        {
+            "name": "webAppResourceGroupName",
+            "type": "string",
+            "label": "WebApp Resource Group Name",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Resource group of WebApp"
+        },
+        {
+            "name": "restore",
+            "type": "boolean",
+            "label": "Is Restore?",
+            "defaultValue": false,
+            "required": false,
+            "helpMarkDown": "Set if it is a backup or restore"
+        }
+    ],
+    "execution": {
+        "Node": {
+            "target": "backupWebApp.ps1"
+        }
+    }
+   
+}

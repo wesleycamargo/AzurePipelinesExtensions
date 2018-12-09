@@ -10,7 +10,7 @@
     "author": "Wesley Camargo",
     "version": {
         "Major": 0,
-        "Minor": 30,
+        "Minor": 38,
         "Patch": 0
     },
     "instanceNameFormat": "Creating backup of $(webAppName)",
@@ -74,6 +74,14 @@
             "defaultValue": false,
             "required": false,
             "helpMarkDown": "Set if it is a backup or restore"
+        },
+        {
+            "name": "restoreEnvironment",
+            "type": "string",
+            "label": "Restore Environment",
+            "defaultValue": "",
+            "required": false,
+            "helpMarkDown": "Restore Environment"
         }
     ],
     "execution": {

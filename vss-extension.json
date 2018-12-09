@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "build-release-task",
     "name": "Wesley Camargo Release Tools",
-    "version": "0.0.32",
+    "version": "0.0.40",
     "publisher": "WesleyCamargo",
     "targets": [
         {

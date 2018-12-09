@@ -10,24 +10,19 @@
     "author": "Wesley Camargo",
     "version": {
         "Major": 0,
-        "Minor": 8,
+        "Minor": 30,
         "Patch": 0
     },
     "instanceNameFormat": "Creating backup of $(webAppName)",
     "inputs": [
         {
             "name": "ConnectedServiceName",
-            "aliases": [
-                "azureSubscription"
-            ],
             "type": "connectedService:AzureRM",
-            "label": "Azure subscription",
+            "label": "Azure RM Subscription",
             "defaultValue": "",
             "required": true,
-            "helpMarkDown": "Select the Azure Resource Manager subscription"
-        },
-
-
+            "helpMarkDown": "Select the Azure Resource Manager subscription for the deployment."
+          },
         {
             "name": "storageAccountResourceGroupName",
             "type": "string",
@@ -82,7 +77,7 @@
         }
     ],
     "execution": {
-        "Node": {
+        "PowerShell3": {
             "target": "backupWebApp.ps1"
         }
     }

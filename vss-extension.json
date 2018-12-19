@@ -1,8 +1,8 @@
 {
     "manifestVersion": 1,
     "id": "build-release-task",
-    "name": "Wesley Camargo Release Tools",
-    "version": "0.0.40",
+    "name": "Azure DevOps Release Tools",
+    "version": "0.0.69",
     "publisher": "WesleyCamargo",
     "targets": [
         {
@@ -19,6 +19,9 @@
     "files": [
         {
             "path": "Tasks/WebAppBackup"
+        },
+        {
+            "path": "Tasks/CreatePullRequest"
         }
     ],
     "contributions": [
@@ -30,6 +33,16 @@
             ],
             "properties": {
                 "name": "Tasks/WebAppBackup"
+            }
+        },
+        {
+            "id": "CreateGitPullRequest",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "Tasks/CreatePullRequest"
             }
         }
     ]

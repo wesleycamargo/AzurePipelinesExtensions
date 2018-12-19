@@ -53,21 +53,37 @@ $sasUrl = New-AzureStorageContainerSASToken -Name $containerName -Permission rwd
 
 Write-Output "Restore: $restore"
 
-if ($restore  -eq "true") {    
-    Write-Output "Initializing restore from '$restoreEnvironment' environment ..."
-
+if ($restore  -eq "true") {            
+    
     $backupname = "$webappname/$releaseId/$restoreEnvironment/$releaseId"
-    
-    $backup = Get-AzureRmWebAppBackupList -ResourceGroupName $webAppResourceGroupName -Name $webappname `
-        | where { $_.BackupName -contains $backupname } `
-        | Select-Object -Last 1 | sort { $_.BackupId } -Descending
-    
+
+    Write-Output "Backup Name: $backupname"
+ 
+    Write-Output "Obtendo backups existentes"
+
+    $backups = Get-AzureRmWebAppBackupList -ResourceGroupName RG-ValidacaoAmbiente -Name qa-wa-TemplateApplication
+
+    Write-Output "Backups existentes:"
+    Write-Output $backups
+
+    if (($backups).BackupName -contains $backupname) {
+        Write-Output "Iniciando restore..."
+        $backup = Get-AzureRmWebAppBackupList -ResourceGroupName $webAppResourceGroupName -Name $webappname `
+            | where { $_.BackupName -contains $backupname } `
+            | Select-Object -Last 1 | sort { $_.BackupId } -Descending
+    }
+    else {
+        Write-Host "##vso[task.logissue type=error]Nao foram encontrados backups para o environment '$restoreEnvironment'"
+        Write-Host "##vso[task.complete result=Failed]"
+        return 1        
+    }
+        
     Write-Output "Backup"
     Write-Output $backup
 
     $backup | Restore-AzureRmWebAppBackup -Overwrite
-
-    return
+  
+    return 0
 }
 
 $environmentName = $env:RELEASE_ENVIRONMENTNAME
@@ -85,3 +101,5 @@ do {
 
     Start-Sleep -s 10
 }while ($statusBackup.BackupStatus -eq "InProgress") 
+
+return 0

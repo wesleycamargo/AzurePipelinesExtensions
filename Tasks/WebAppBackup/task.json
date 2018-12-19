@@ -1,8 +1,8 @@
 {
     "id": "d6c76deb-81b8-42de-904e-11ceca9aa0ff",
     "name": "AzureWebAppBackup",
-    "friendlyName": "AzureWebAppBackup",
-    "description": "AzureWebAppBackup",
+    "friendlyName": "Azure WebApp Backup",
+    "description": "Create and Restore an AzureWebApp Backup",
     "helpMarkDown": "",
     "categories": [
         "Azure Pipelines"
@@ -10,17 +10,35 @@
     "author": "Wesley Camargo",
     "version": {
         "Major": 0,
-        "Minor": 38,
+        "Minor": 51,
         "Patch": 0
     },
-    "instanceNameFormat": "Creating backup of $(webAppName)",
+    "instanceNameFormat": "Creating backup of WebApp",
+    "groups": [
+        {
+           "name": "storageAccountInfo",
+           "displayName": "Storage Account Informations",
+           "isExpanded": true
+       },
+       {
+           "name": "webAppInfo",
+           "displayName": "WebApp Informations",
+           "isExpanded": true
+       },
+       {
+           "name": "restoreInfo",
+           "displayName": "Restore Informations",
+           "isExpanded": true
+       }
+          
+   ],
     "inputs": [
         {
             "name": "ConnectedServiceName",
             "type": "connectedService:AzureRM",
             "label": "Azure RM Subscription",
             "defaultValue": "",
-            "required": true,
+            "required": true,            
             "helpMarkDown": "Select the Azure Resource Manager subscription for the deployment."
           },
         {
@@ -29,6 +47,7 @@
             "label": "Resource Group of Storage Account",
             "defaultValue": "",
             "required": true,
+            "groupName": "storageAccountInfo",
             "helpMarkDown": "Resource Group of Storage Account"
         },
         {
@@ -37,6 +56,7 @@
             "label": "Storage Account Name",
             "defaultValue": "",
             "required": true,
+            "groupName": "storageAccountInfo",
             "helpMarkDown": "Storage Account Name",
             "properties": {
                 "EditableOptions": "True"
@@ -48,16 +68,8 @@
             "label": "Storage Container Name",
             "defaultValue": "",
             "required": true,
+            "groupName": "storageAccountInfo",
             "helpMarkDown": "Container where backup will be storage"
-        },
-
-        {
-            "name": "webAppName",
-            "type": "string",
-            "label": "WebApp Name",
-            "defaultValue": "",
-            "required": true,
-            "helpMarkDown": "WebApp that will be backuped"
         },
         {
             "name": "webAppResourceGroupName",
@@ -65,7 +77,17 @@
             "label": "WebApp Resource Group Name",
             "defaultValue": "",
             "required": true,
+            "groupName": "webAppInfo",
             "helpMarkDown": "Resource group of WebApp"
+        },
+        {
+            "name": "webAppName",
+            "type": "string",
+            "label": "WebApp Name",
+            "defaultValue": "",
+            "required": true,
+            "groupName": "webAppInfo",
+            "helpMarkDown": "WebApp that will be backuped"
         },
         {
             "name": "restore",
@@ -73,6 +95,7 @@
             "label": "Is Restore?",
             "defaultValue": false,
             "required": false,
+            "groupName": "restoreInfo",
             "helpMarkDown": "Set if it is a backup or restore"
         },
         {
@@ -81,7 +104,9 @@
             "label": "Restore Environment",
             "defaultValue": "",
             "required": false,
-            "helpMarkDown": "Restore Environment"
+            "groupName": "restoreInfo",
+            "helpMarkDown": "Restore Environment",
+            "visibleRule": "restore = true"
         }
     ],
     "execution": {

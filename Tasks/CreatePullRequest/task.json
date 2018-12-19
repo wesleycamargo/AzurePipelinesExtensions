@@ -1,0 +1,49 @@
+{
+    "id": "2b39a16a-14d7-44ea-bf4a-7a4db7a5860e",
+    "name": "CreateGitPullRequest",
+    "friendlyName": "Create Git Pull Request",
+    "description": "Create Git Pull Request",
+    "helpMarkDown": "",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "author": "Wesley Camargo",
+    "version": {
+        "Major": 0,
+        "Minor": 10,
+        "Patch": 0
+    },
+    "instanceNameFormat": "Creating Git Pull Request",
+    "groups": [
+        {
+           "name": "BranchesInfo",
+           "displayName": "Branches Informations",
+           "isExpanded": true
+       }          
+   ],
+    "inputs": [
+        {
+            "name": "TargetBranch",
+            "type": "string",
+            "label": "Target Branch",
+            "defaultValue": "",
+            "required": true,
+            "groupName": "BranchesInfo",
+            "helpMarkDown": "Target Branch"
+        },
+        {
+            "name": "autoComplete",
+            "type": "boolean",
+            "label": "Is Auto Complete?",
+            "defaultValue": false,
+            "required": false,            
+            "helpMarkDown": "Set if it is a autoComplete pull request"
+        }
+    ],
+    "execution": {
+        "PowerShell3": {
+            "target": "CreatePullRequest.ps1"
+        }
+    }
+   
+}

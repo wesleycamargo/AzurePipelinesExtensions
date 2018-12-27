@@ -10,7 +10,7 @@
     "author": "Wesley Camargo",
     "version": {
         "Major": 0,
-        "Minor": 10,
+        "Minor": 14,
         "Patch": 0
     },
     "instanceNameFormat": "Creating Git Pull Request",
@@ -19,6 +19,11 @@
            "name": "BranchesInfo",
            "displayName": "Branches Informations",
            "isExpanded": true
+       },
+       {
+           "name":"AuthInfo",
+           "displayName": "Authentication Informations",
+           "isExpanded":true
        }          
    ],
     "inputs": [
@@ -37,7 +42,26 @@
             "label": "Is Auto Complete?",
             "defaultValue": false,
             "required": false,            
+            "groupName": "BranchesInfo",
             "helpMarkDown": "Set if it is a autoComplete pull request"
+        },
+        {
+            "name": "PATuser",
+            "type": "string",
+            "label": "User from PAT",
+            "defaultValue": "",
+            "required": false,
+            "groupName": "AuthInfo",
+            "helpMarkDown": "User from PAT"
+        },
+        {
+            "name": "PATtoken",
+            "type": "string",
+            "label": "Personal Access Token",
+            "defaultValue": "",
+            "required": false,
+            "groupName": "AuthInfo",
+            "helpMarkDown": "Personal Access Token"
         }
     ],
     "execution": {

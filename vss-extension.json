@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "build-release-task",
     "name": "Azure DevOps Release Tools",
-    "version": "0.0.69",
+    "version": "0.0.73",
     "publisher": "WesleyCamargo",
     "targets": [
         {

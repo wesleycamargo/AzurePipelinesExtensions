@@ -10,17 +10,22 @@
     "author": "Wesley Camargo",
     "version": {
         "Major": 0,
-        "Minor": 10,
+        "Minor": 12,
         "Patch": 0
     },
     "instanceNameFormat": "Creating Git Pull Request",
     "groups": [
         {
-           "name": "BranchesInfo",
-           "displayName": "Branches Informations",
-           "isExpanded": true
-       }          
-   ],
+            "name": "BranchesInfo",
+            "displayName": "Branches Informations",
+            "isExpanded": true
+        },
+        {
+            "name": "AuthInfo",
+            "displayName": "Authentication Informations",
+            "isExpanded": true
+        }
+    ],
     "inputs": [
         {
             "name": "TargetBranch",
@@ -36,8 +41,25 @@
             "type": "boolean",
             "label": "Is Auto Complete?",
             "defaultValue": false,
-            "required": false,            
+            "required": false,
+            "groupName": "BranchesInfo",
             "helpMarkDown": "Set if it is a autoComplete pull request"
+        },
+        {
+            "name": "PATuser",
+            "type": "string",
+            "label": "PAT User",            
+            "required": false,
+            "groupName": "AuthInfo",
+            "helpMarkDown": "Set PAT User"
+        },
+        {
+            "name": "PATtoken",
+            "type": "string",
+            "label": "PAT Token",            
+            "required": false,
+            "groupName": "AuthInfo",
+            "helpMarkDown": "Set PAT Token"
         }
     ],
     "execution": {
@@ -45,5 +67,4 @@
             "target": "CreatePullRequest.ps1"
         }
     }
-   
 }

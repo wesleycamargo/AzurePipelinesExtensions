@@ -1,0 +1,94 @@
+{
+    "id": "ffc5cdfc-b397-4e8f-bc39-f86cab774257",
+    "name": "SendEmailFromTemplate",
+    "friendlyName": "Send email from template",
+    "description": "Send email from template",
+    "helpMarkDown": "",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "author": "Wesley Camargo",
+    "version": {
+        "Major": 0,
+        "Minor": 0,
+        "Patch": 4
+    },
+    "instanceNameFormat": "Send email from template",
+    "groups": [
+        {
+            "name": "ServerInfo",
+            "displayName": "Server Informations",
+            "isExpanded": true
+        },
+        {
+            "name": "SendInfo",
+            "displayName": "Send Informations",
+            "isExpanded": true
+        }
+    ],
+    "inputs": [
+        {
+            "name": "EmailCredential",
+            "type": "string",
+            "label": "Email Credential",
+            "defaultValue": "",
+            "required": true,
+            "groupName": "ServerInfo",
+            "helpMarkDown": "Email Credential"
+        },
+        {
+            "name": "PassCredential",
+            "type": "string",
+            "label": "Password Credential",
+            "required": true,
+            "groupName": "ServerInfo",
+            "helpMarkDown": "Password Credential"
+        },
+        {
+            "name": "SMTPServer",
+            "type": "string",
+            "label": "SMTP Server",            
+            "required": false,
+            "groupName": "ServerInfo",
+            "helpMarkDown": "SMTP Server"
+        },
+        
+        {
+            "name": "emailTo",
+            "type": "string",
+            "label": "To",            
+            "required": false,
+            "groupName": "SendInfo",
+            "helpMarkDown": "To"
+        },        
+        {
+            "name": "emailFrom",
+            "type": "string",
+            "label": "From",            
+            "required": false,
+            "groupName": "SendInfo",
+            "helpMarkDown": "From"
+        },        
+        {
+            "name": "subject",
+            "type": "string",
+            "label": "Subject",            
+            "required": false,
+            "groupName": "SendInfo",
+            "helpMarkDown": "Subject"
+        },
+        {
+            "name": "templateDirectory",
+            "type": "string",
+            "label": "Template Directory",            
+            "required": false,
+            "groupName": "SendInfo",
+            "helpMarkDown": "Template Directory"
+        }
+    ],
+    "execution": {
+        "PowerShell3": {
+            "target": "SendMail.ps1"
+        }
+    }
+}

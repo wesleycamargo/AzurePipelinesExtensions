@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "build-release-task",
     "name": "Azure DevOps Release Tools",
-    "version": "0.0.69",
+    "version": "0.0.82",
     "publisher": "WesleyCamargo",
     "targets": [
         {
@@ -22,6 +22,12 @@
         },
         {
             "path": "Tasks/CreatePullRequest"
+        },
+        {
+            "path": "Tasks/KeyVaultTransform"
+        },
+        {
+            "path": "Tasks/SendMail"
         }
     ],
     "contributions": [
@@ -43,6 +49,26 @@
             ],
             "properties": {
                 "name": "Tasks/CreatePullRequest"
+            }
+        },        
+        {
+            "id": "KeyVaultTransform",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "Tasks/KeyVaultTransform"
+            }
+        },        
+        {
+            "id": "SendMail",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "Tasks/SendMail"
             }
         }
     ]

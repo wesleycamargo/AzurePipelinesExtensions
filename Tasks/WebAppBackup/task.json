@@ -10,7 +10,7 @@
     "author": "Wesley Camargo",
     "version": {
         "Major": 0,
-        "Minor": 51,
+        "Minor": 53,
         "Patch": 0
     },
     "instanceNameFormat": "Creating backup of WebApp",

@@ -15,8 +15,8 @@ $pass = Get-VstsInput -Name PassCredential
 $smtpServer = Get-VstsInput -Name SMTPServer
 $to = Get-VstsInput -Name emailTo
 $from = Get-VstsInput -Name emailFrom
-$template = Get-VstsInput -Name subject
-$subject = Get-VstsInput -Name templateDirectory
+$subject = Get-VstsInput -Name subject
+$template = Get-VstsInput -Name templateDirectory
 
 $body = Get-Content $template
 Write-Host $body

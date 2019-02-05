@@ -61,7 +61,7 @@ if ($restore  -eq "true") {
  
     Write-Output "Obtendo backups existentes"
 
-    $backups = Get-AzureRmWebAppBackupList -ResourceGroupName RG-ValidacaoAmbiente -Name qa-wa-TemplateApplication
+    $backups = Get-AzureRmWebAppBackupList -ResourceGroupName $webAppResourceGroupName -Name $webappname
 
     Write-Output "Backups existentes:"
     Write-Output $backups
